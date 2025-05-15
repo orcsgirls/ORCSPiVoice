@@ -1,0 +1,68 @@
+<html>
+<body>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 20px;
+}
+
+div {
+  background: lemonchiffon;
+  margin: 0 auto;
+  width: 800px;
+  padding: 10px;
+}
+
+h1 {
+  color:orange;
+}
+</style>
+    
+<div>
+<h1>AIY Voice Kit</h1>
+
+<h3>Controlling the Button Led</h3>
+    <p>Link <tt><b>/led?value=color</b></tt>. Knows red, gree and blue. Off will turn it off.</p>
+
+<form target="Response" action="/led" method="get">
+    <select name="value">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="off">Off</option>
+    </select>
+    <input type="submit" value="Do it">
+</form>
+
+<h3>Sound files</h3>
+<h3>Speak text</h3>
+    <p>Link <tt><b>/say?value=text_to_speak</B></tt>. Note the text needs to be 'htmlified' e.g. spaces are %20.</p>
+
+<form target="Response" action="/say" method="get">
+    <input type="text" name="value">
+    <select name="pitch">
+        <option value="50">Low voice</option>
+        <option value="130">Normal voice</option>
+        <option value="200">High voice</option>
+    </select>    
+    <input type="submit" value="Say it">
+</form>
+
+<h3>Sound files</h3>
+    <p>Link <tt><b>/play?value=sound</b></tt>. The available sounds are in the Sounds directory of the server.  They need to be in WAV format. Link <tt><b>/list</b></tt> lists available sounds.
+
+<form target="Response" action="/play" method="get">
+    <select name="value">
+        <option value="boing">Boing sound</option>
+        <option value="alert">Alert sound</option>
+    </select>    
+    <input type="submit" value="Do it">
+</form>
+
+<hr>
+<h3>Response from API</h3>
+<iframe name="Response" style="border:none; height:75px; width:100%;"></iframe>
+</div>
+</body>
+</html>
