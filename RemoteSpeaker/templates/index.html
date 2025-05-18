@@ -1,21 +1,24 @@
 <html>
 <body>
 <style>
-  body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  padding: 20px;
-}
 
 div {
   background: lemonchiffon;
-  margin: 0 auto;
-  width: 800px;
-  padding: 10px;
+  padding: 20px;
+  margin: 5px; 
 }
 
 h1 {
   color:orange;
+}
+
+@media screen and (max-width: 1200px) {
+input {
+  font-size: 300%;
+}
+select {
+  font-size: 300%;
+}
 }
 </style>
     
@@ -44,7 +47,7 @@ h1 {
     <p>Link <tt><b>/say?value=text_to_speak</B></tt>. Note the text needs to be 'htmlified' e.g. spaces are %20.</p>
 
 <form target="Response" action="/say" method="get">
-    <input type="text" name="value" value="Hello">
+    <input type="text" name="value" size=12 value="Hello">
     <select name="pitch">
         <option value="50">Low voice</option>
         <option value="130" selected>Normal voice</option>
