@@ -4,30 +4,25 @@ import requests
 import time
 from urllib.parse import quote
 
-import subprocess
-
-def set_volume(volume_level):
-    """Sets the ALSA volume level.
-
-    Args:
-        volume_level: An integer between 0 and 100 representing the desired volume percentage.
-    """
-    command = ["amixer", "sset", "Master", f"{volume_level}%"]
-    subprocess.run(command, stdout = subprocess.DEVNULL)
-
-
+# The URL to the Voicebox you want to control
 VOICE_URL = "http://10.0.0.126:5000"  # Note https does not work the way we are set up
+
+# Example to change the Led color
 response = requests.get(VOICE_URL+'/led?value=green')
 
-for i in range(10):
-    response = requests.get(VOICE_URL+'/led?value=green')
-    time.sleep(0.1)
-    response = requests.get(VOICE_URL+'/led?value=off')
-    time.sleep(0.1)
-    response = requests.get(VOICE_URL+'/play?value=boing&volume='+str(i*7))
+# Example to play sound
+response = requests.get(VOICE_URL+'/play?value=Boing&volume=40')
 
-text = "ORCSGirls are the best"
-value = quote(text)
-print(value)
-response = requests.get(VOICE_URL+'/say?value='+value)
-print(response.json())
+# Example to speak some text. Note the quote command takes care of proper encoding for a link
+text = quote("ORCSGirls are the best")
+response = requests.get(VOICE_URL+'/say?value='+text)
+
+# Simple loop to blink the Led in differnt colors
+colors=['red','green','blue']
+for c in colors:
+    response = requests.get(VOICE_URL+'/led?value='+c)
+    time.sleep(1.0)
+
+# Turning Led back off
+response = requests.get(VOICE_URL+'/led?value=off')
+

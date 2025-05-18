@@ -20,30 +20,34 @@ h1 {
 </style>
     
 <div>
-<h1>AIY Voice Kit</h1>
+<h1>AIY Voice Kit -- {{host}}</h1>
+<hr>
 
 <h3>Controlling the Button Led</h3>
     <p>Link <tt><b>/led?value=color</b></tt>. Knows red, gree and blue. Off will turn it off.</p>
 
 <form target="Response" action="/led" method="get">
     <select name="value">
-        <option value="red">Red</option>
+        <option value="red" selected>Red</option>
         <option value="green">Green</option>
         <option value="blue">Blue</option>
+        <option value="cyan">Cyan</option>
+        <option value="purple">Purple</option>
+        <option value="yellow">Yellow</option>
+        <option value="white">White</option>
         <option value="off">Off</option>
     </select>
     <input type="submit" value="Do it">
 </form>
 
-<h3>Sound files</h3>
 <h3>Speak text</h3>
     <p>Link <tt><b>/say?value=text_to_speak</B></tt>. Note the text needs to be 'htmlified' e.g. spaces are %20.</p>
 
 <form target="Response" action="/say" method="get">
-    <input type="text" name="value">
+    <input type="text" name="value" value="Hello">
     <select name="pitch">
         <option value="50">Low voice</option>
-        <option value="130">Normal voice</option>
+        <option value="130" selected>Normal voice</option>
         <option value="200">High voice</option>
     </select>    
     <input type="submit" value="Say it">
@@ -53,11 +57,27 @@ h1 {
     <p>Link <tt><b>/play?value=sound</b></tt>. The available sounds are in the Sounds directory of the server.  They need to be in WAV format. Link <tt><b>/list</b></tt> lists available sounds.
 
 <form target="Response" action="/play" method="get">
-    <select name="value">
-        <option value="boing">Boing sound</option>
-        <option value="alert">Alert sound</option>
-    </select>    
+   <select name="value">
+      <option value=Croak>Sound: Croak</option>
+      <option value=Ya2>Sound: Ya2</option>
+      <option value=Cheer>Sound: Cheer</option>
+      <option value=Alert>Sound: Alert</option>
+      <option value=Goose selected>Sound: Goose</option>
+      <option value=SqueakyToy>Sound: SqueakyToy</option>
+      <option value=Tada>Sound: Tada</option>
+      <option value=Boing>Sound: Boing</option>
+      <option value=Meow>Sound: Meow</option>
+      <option value=Whoop>Sound: Whoop</option>
+   </select>
     <input type="submit" value="Do it">
+</form>
+
+<h3>Volume files</h3>
+    <p>Link <tt><b>/volume?value=level</b></tt>. This will set tthe volume from 0 to 100%.
+
+<form target="Response" action="/volume" method="get">
+    <input type="number" min="0" max="100" size=10 name="value" value="40"> %
+    <input type="submit" value="Set volume">
 </form>
 
 <hr>
