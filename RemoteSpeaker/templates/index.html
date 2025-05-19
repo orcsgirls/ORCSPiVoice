@@ -1,33 +1,36 @@
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
 <style>
 
-div {
+body {
   background: lemonchiffon;
   padding: 20px;
-  margin: 5px; 
+  margin: 0px; 
+  font-size: 12pt;
+}
+
+input, select {
+  font-size: 12pt;
 }
 
 h1 {
   color:orange;
+  margin: 0px;
 }
 
-@media screen and (max-width: 1200px) {
-input {
-  font-size: 300%;
+h3 {
+  margin: 0px;
 }
-select {
-  font-size: 300%;
-}
-}
+
 </style>
     
 <div>
-<h1>AIY Voice Kit -- {{host}}</h1>
+<h1>AIY Voice Kit</h1>
 <hr>
 
 <h3>Controlling the Button Led</h3>
-    <p>Link <tt><b>/led?value=color</b></tt>. Knows red, gree and blue. Off will turn it off.</p>
+    <p>Link <tt><b>/led?value=color</b></tt>. Off will turn it off.</p>
 
 <form target="Response" action="/led" method="get">
     <select name="value">
@@ -76,7 +79,7 @@ select {
 </form>
 
 <h3>Volume files</h3>
-    <p>Link <tt><b>/volume?value=level</b></tt>. This will set tthe volume from 0 to 100%.
+    <p>Link <tt><b>/volume?value=level</b></tt>. This will set the volume from 0 to 100%.
 
 <form target="Response" action="/volume" method="get">
     <input type="number" min="0" max="100" size=10 name="value" value="40"> %
@@ -84,6 +87,7 @@ select {
 </form>
 
 <hr>
+<i>Server: {{host}}</i>
 <h3>Response from API</h3>
 <iframe name="Response" style="border:none; height:75px; width:100%;"></iframe>
 </div>
